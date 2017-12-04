@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>观察者</title>
+		<script>
+			var obj = {
+				
+				callback :[],
+				
+				add:function(ob){// 订阅
+					this.callback.push(ob)
+				},
+				
+				observer:function(n){//发布
+					for(var i= 0;i<this.callback.length;i++){
+						this.callback[i](n)
+					}
+				}		
+			}
+			
+				obj.add(fn1)  //订阅
+				obj.add(fn2)
+				function fn1(n){
+					
+					if(n=="吃饭了"){
+						console.log("等一下去吃")
+					}			
+				}
+							
+				function fn2(n){
+					if(n=="吃饭了"){
+						console.log("肚子不饿，不吃")
+					}
+				}		
+				onload = function(){
+					var cli = document.getElementById("bu");
+					cli.onclick = function(){
+						console.log("吃饭了")
+						obj.observer("吃饭了")		
+					}
+				}
+			
+		</script>
+	</head>
+	<body>
+		<button id="bu">发布</button>
+	</body>
+</html>
