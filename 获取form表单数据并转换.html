@@ -1,54 +1,38 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>表单数据转换</title>
 		<script type="text/javascript" src="../baidumap/js/jquery.min.js" ></script>
 		<script>	
-			
-				$(function(){
-					dat.geti=function(form){  //将获取到的form数组转成对象
-						console.log(form)
-						var o = {}
-						var	x=form.serializeArray() //获取from表单的所有值
-						console.log(x)
-						 $.each(x, function(i,v) {
-						 	if(o[v.name]){
-						 		o[v.name]=o[v.name]+","+v.value
-						 	}else{
-						 			o[v.name]=v.value
-						 	}
+			$(function(){
+				var dat={} 	
+				dat.geti=function(form){  //将获取到的form数组转成对象
+					console.log(form)
+					var o = {}
+					var	x=form.serializeArray() //获取from表单的所有值
+					console.log(x)
+					 $.each(x, function(i,v) {
+					 	if(o[v.name]){
+					 		o[v.name]=o[v.name]+","+v.value
+					 	}else{
+					 			o[v.name]=v.value
+					 	}
 					 })
 					console.log(o)
 					return o
-					}
-			
-						$("#boz").onclick=function(){
-							
-						}
+				}
+				dat.init = function(){
+					$("#boz").click(function(){
+					 dat.geti($("form"))
+					})	
+				}
+				
+				
+				dat.init()  //执行
 					
-					
-				})
-				
-//				function $(id){
-//					return document.querySelector(id); 
-//				}
-				
-				
-			
-			
-			
-			
-				
-				
-				 
-				
-				 
-				 
-				 
-				 
+			})
 		
-			
 		</script>
 	</head>
 	<body>
@@ -61,7 +45,7 @@
 			<!--	<input type="submit" value=""/>-->
 			</form>
 			<br />
-			<div id="boz">点击</div>
+			<button id="boz">点击</button>
 			
 		</div>
 	</body>
