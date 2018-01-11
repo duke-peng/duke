@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>IsPc</title>
+		<script>
+			console.log(navigator.userAgent)
+
+			function IsPc() {
+				var userAgent = navigator.userAgent
+
+				var phone = ['Android', 'iPhone', 'SymbianOS', 'windows Phone', 'iPad', 'iPod'];
+				for(k in phone) {
+					if(userAgent.indexOf(phone[k]) > 0) {
+						return false
+					}
+				}
+
+				return true
+			}
+
+			console.log(IsPc())
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
