@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	
+	</head>
+	
+	<body>
+		<button id="but1">按钮1</button>
+		<button id="but2">按钮2</button>
+	</body>
+</html>
+	<script>
+			//事件监听器 ： 相同事件不会覆盖
+			
+			//obj : 对象
+			//type： 事件类型
+			//fn  :执行的事件
+			//useCapture : 是否冒泡
+			
+			
+			
+			//添加事件
+			function addEvent(obj,type,fn,useCapture){
+				if(obj.addEventListener){ //IE9 和其它
+					obj.addEventListener(type,fn,useCapture)
+				}
+				else{
+					obj.attachEvent('on'+type,fn)
+				}
+				
+			}
+			
+			
+			//移除事件
+			
+			
+			function removeEvent(obj,type,fn,userCapture){
+				if(obj.removeEventListener){
+					obj.removeEventListener(type,fn,userCapture)
+				}else{
+					obj.detachEvent('on'+type,fn)
+				}
+			}
+			
+			
+			var but1 = document.getElementById('but1')
+			var but2 = document.getElementById('but2')
+			addEvent(but1,'click',fn1,false)
+			function fn1(){
+				alert("按钮1")
+			}
+			
+			but2.onclick = function(){
+				removeEvent(but1,'click',fn1,false)
+			}
+			
+			
+			
+			
+			
+			
+			
+		</script>
